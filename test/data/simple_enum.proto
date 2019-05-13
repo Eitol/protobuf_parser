@@ -1,0 +1,5 @@
+enum Color {
+    INVALID = 1;
+    RED = 2;
+    BLUE=3;
+}

@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package api.gen;
+
+option go_package = "genpb";
+option java_multiple_files = true;
+option java_outer_classname = "BasketProto";
+option java_package = "com.api.gen";
+
+import "api/protos/promotion.proto";
+import "google/api/annotations.proto";
+
+service BasketService {
+  rpc Update(UpdateBasketReq) returns (UpdateBasketResp) {
+    option (google.api.http) = {
+      post: "/user/{basket.user_id}/basket"
+      body: "*"
+    };
+  }
+  rpc Get(GetBasketReq) returns (Basket) {
+    option (google.api.http) = {
+      get: "/user/{basket.user_id}/basket"
+      body: "*"
+    };
+  }
+}
+
+message UpdateBasketReq {
+  Basket basket = 1;
+}
+
+message UpdateBasketResp {
+  double subtotal = 1;
+  double total = 2;
+  repeated api.gen.Promotion applied_promotions = 3;
+}
+
+message Basket {
+  string id = 1;
+  string user_id = 2;
+  repeated string product_ids = 3;
+}

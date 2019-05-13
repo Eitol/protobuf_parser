@@ -1,0 +1,14 @@
+service BasketService {
+  rpc Update(UpdateBasketReq) returns (UpdateBasketResp) {
+    option (google.api.http) = {
+      post: "/user/{basket.user_id}/basket"
+      body: "*"
+    };
+  }
+  rpc Get(GetBasketReq) returns (Basket) {
+    option (google.api.http) = {
+      get: "/user/{basket.user_id}/basket"
+      body: "*"
+    };
+  }
+}
