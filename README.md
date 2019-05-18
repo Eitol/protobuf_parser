@@ -4,7 +4,7 @@ Allows you to parse protobuf files to python objects. This repo is part of base_
 
 ## Getting Started
 
-You only need to pass the filename as argument of the program.
+You only need to pass the filename as argument of the function.
 
 ```
 parse_file("file_example.proto")
